@@ -1,0 +1,28 @@
+#include "DIA_AVP.h"
+#include <cxxtest/TestSuite.h>
+
+class DIA_AVPTester : public CxxTest::TestSuite
+{
+   public:
+   void test_get_next_sub_avp_groupedAVP();
+   void test_get_next_sub_avp_nongroupedAVP();
+};
+
+void DIA_AVPTester::test_get_next_sub_avp_groupedAVP()
+{
+  DIA_AVP avp;
+  DIA_AVP avp_new;
+  avp.m_datatype = AVP_DATA_TYPE_GROUPED;
+  TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_PARSE_CODE_SUCESS);
+}
+
+void DIA_AVPTester::test_get_next_sub_avp_nongroupedAVP()
+{
+  DIA_AVP avp;
+  DIA_AVP avp_new;
+  avp.m_datatype = AVP_DATA_TYPE_OCTET_STRING;  
+  //TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_PARSE_CODE_SUCESS);
+  TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_ERR_FAILURE);
+}
+
+
