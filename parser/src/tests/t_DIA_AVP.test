@@ -10,19 +10,23 @@ class DIA_AVPTester : public CxxTest::TestSuite
 
 void DIA_AVPTester::test_get_next_sub_avp_groupedAVP()
 {
+  TS_TRACE("Starting test_get_next_sub_avp_groupedAVP test");
   DIA_AVP avp;
   DIA_AVP avp_new;
   avp.m_datatype = AVP_DATA_TYPE_GROUPED;
   TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_PARSE_CODE_SUCESS);
+  TS_TRACE("Finishing test_get_next_sub_avp_groupedAVP test");
 }
 
 void DIA_AVPTester::test_get_next_sub_avp_nongroupedAVP()
 {
+  TS_TRACE("Starting test_get_next_sub_avp_nongroupedAVP test");
   DIA_AVP avp;
   DIA_AVP avp_new;
   avp.m_datatype = AVP_DATA_TYPE_OCTET_STRING;  
   //TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_PARSE_CODE_SUCESS);
   TS_ASSERT_EQUALS(avp.get_next_sub_avp(avp_new),DIA_ERR_FAILURE);
+  TS_TRACE("Finishing test_get_next_sub_avp_nongroupedAVP test");
 }
 
 
